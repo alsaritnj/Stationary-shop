@@ -29,6 +29,32 @@ namespace Stationary_shop
             this.Icon = new Icon(@"Files\Pictures\forms icon.ico");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BackgroundImage = Image.FromFile(@"Files\Pictures\shop logo.png");
+
+
+            Merchandise[] Merchandises = new Merchandise[100]; 
+            int number = 0;
+            try
+            {
+                String[] s = System.IO.File.ReadAllLines(@"Files\список товаров.txt");
+           
+                for (int i = 0; i < s.Length; i += 3)
+                {
+                    Merchandises[number] = new Merchandise(s[i], s[i + 1], Double.Parse(s[i + 2]));
+                    number++;
+                }
+
+                for (int i = 0; i < number; i++)
+                {
+                    richTextBox1.Text += Merchandises[i].Kategory + " " 
+                        + Merchandises[i].Name + " " 
+                        + Merchandises[i].Price + "\n";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не верный путь к файлу!", "Ошибка программы!", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
