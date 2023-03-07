@@ -30,13 +30,23 @@ namespace Stationary_shop
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BackgroundImage = Image.FromFile(@"Files\Pictures\shop logo.png");
 
+            AddMerchandisesFromFileToDataGridView(@"Files\список товаров.txt", this, dataGridView1);
+        }
 
-            Merchandise[] Merchandises = new Merchandise[100]; 
+        private static void AddMerchandisesFromFileToDataGridView(string filePath, Form form, DataGridView dataGridView)
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("Категория товара");
+            dataTable.Columns.Add("Название товара");
+            dataTable.Columns.Add("Цена товара");
+
+            Merchandise[] Merchandises = new Merchandise[100];
             int number = 0;
+
+            String[] s = System.IO.File.ReadAllLines(filePath);
             try
             {
-                String[] s = System.IO.File.ReadAllLines(@"Files\список товаров.txt");
-           
                 for (int i = 0; i < s.Length; i += 3)
                 {
                     Merchandises[number] = new Merchandise(s[i], s[i + 1], Double.Parse(s[i + 2]));
@@ -45,14 +55,21 @@ namespace Stationary_shop
 
                 for (int i = 0; i < number; i++)
                 {
-                    richTextBox1.Text += Merchandises[i].Kategory + " " 
-                        + Merchandises[i].Name + " " 
-                        + Merchandises[i].Price + "\n";
+                    DataRow newRow = dataTable.NewRow();
+                    newRow[0] = Merchandises[i].Kategory;
+                    newRow[1] = Merchandises[i].Name;
+                    newRow[2] = Merchandises[i].Price;
+                    dataTable.Rows.Add(newRow);
                 }
+
+                dataGridView.DataSource = dataTable;
+                dataGridView.Columns[0].Width = form.Size.Width / 3;
+                dataGridView.Columns[1].Width = form.Size.Width / 3;;
+                dataGridView.Columns[2].Width = (form.Size.Width / 3);
             }
             catch
             {
-                MessageBox.Show("Не верный путь к файлу!", "Ошибка программы!", 
+                MessageBox.Show("Не верные данные в файле!", "Ошибка программы!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
