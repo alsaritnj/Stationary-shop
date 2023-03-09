@@ -68,6 +68,7 @@ namespace Stationary_shop
             this.отзывыToolStripMenuItem.Name = "отзывыToolStripMenuItem";
             this.отзывыToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.отзывыToolStripMenuItem.Text = "Отзывы";
+            this.отзывыToolStripMenuItem.Click += new System.EventHandler(this.отзывыToolStripMenuItem_Click);
             // 
             // входРегистрацияToolStripMenuItem
             // 
@@ -131,6 +132,7 @@ namespace Stationary_shop
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
