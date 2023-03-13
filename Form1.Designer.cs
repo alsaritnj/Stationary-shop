@@ -81,6 +81,7 @@ namespace Stationary_shop
             this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
             this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(151, 20);
             this.администрированиеToolStripMenuItem.Text = "Администрирование";
+            this.администрированиеToolStripMenuItem.Click += new System.EventHandler(this.администрированиеToolStripMenuItem_Click);
             // 
             // label1
             // 
