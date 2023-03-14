@@ -75,6 +75,7 @@ namespace Stationary_shop
             this.входРегистрацияToolStripMenuItem.Name = "входРегистрацияToolStripMenuItem";
             this.входРегистрацияToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.входРегистрацияToolStripMenuItem.Text = "Вход/Регистрация";
+            this.входРегистрацияToolStripMenuItem.Click += new System.EventHandler(this.входРегистрацияToolStripMenuItem_Click);
             // 
             // администрированиеToolStripMenuItem
             // 

@@ -105,5 +105,11 @@ namespace Stationary_shop
             Form3 form3 = new Form3();
             form3.Show();
         }
+
+        private void входРегистрацияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5();
+            form5.Show();
+        }
     }
 }
