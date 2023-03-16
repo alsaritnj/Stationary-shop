@@ -31,6 +31,11 @@ namespace Stationary_shop
             pictureBox1.BackgroundImage = Image.FromFile(@"Files\Pictures\shop logo.png");
 
             AddMerchandisesFromFileToDataGridView(@"Files\список товаров.txt", this, dataGridView1);
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Files\режим.txt"))
+            {
+                file.WriteLine(0);
+            }
         }
 
         private static void AddMerchandisesFromFileToDataGridView(string filePath, Form form, DataGridView dataGridView)

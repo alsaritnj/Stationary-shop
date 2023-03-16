@@ -131,5 +131,64 @@ namespace Stationary_shop
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text == "" || textBox5.Text == "")
+            {
+                MessageBox.Show("Введите данные полностью!", "Ошибка входа в программу",
+                MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                textBox4.Text = "";
+                this.ActiveControl = textBox4;
+            }
+            else
+            {
+
+                bool p2 = false;
+                for (int i = 0; i < numberOfCustomers; i++)
+                {
+                    if (textBox4.Text == customers[i].Login)
+                    {
+                        p2 = true;
+                        bool p1 = false;
+                        if (textBox5.Text == customers[i].Password)
+                        {
+                            p1 = true;
+                        }
+
+                        if (!p1)
+                        {
+                            MessageBox.Show("Пароль неверный!", "Ошибка входа в программу",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            textBox4.Text = "";
+                            textBox5.Text = "";
+
+                            this.ActiveControl = textBox4;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Добро пожаловать, " + textBox4.Text + " !", "вход в программу", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            using (System.IO.StreamWriter file = new
+                            System.IO.StreamWriter(@"Files\Режим.txt"))
+                            {
+                                file.WriteLine(1);
+                                file.WriteLine(textBox4.Text);
+                            }
+
+                            customerRegistered = true;
+                            this.Close();
+                        }
+                    }
+                }
+                if (!p2) 
+                {
+                    MessageBox.Show("Вы не зарегистрированы!", "Ошибка входа!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    this.ActiveControl = textBox4;
+                }
+            }
+        }
     }
 }
