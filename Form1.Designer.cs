@@ -62,6 +62,7 @@ namespace Stationary_shop
             this.заказТовараToolStripMenuItem.Name = "заказТовараToolStripMenuItem";
             this.заказТовараToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.заказТовараToolStripMenuItem.Text = "Заказ товара";
+            this.заказТовараToolStripMenuItem.Click += new System.EventHandler(this.заказТовараToolStripMenuItem_Click);
             // 
             // отзывыToolStripMenuItem
             // 

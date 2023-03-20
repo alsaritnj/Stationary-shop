@@ -116,5 +116,20 @@ namespace Stationary_shop
             Form5 form5 = new Form5();
             form5.Show();
         }
+
+        private void заказТовараToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] u = System.IO.File.ReadAllLines(@"Files\Режим.txt");
+            if (u[0] == "0")
+            {
+                MessageBox.Show("Для возможности заказать товары вам нужно яарегистрироваться в программе или войти под своим логином", "Заказ товара",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Form6 f = new Form6();//переход на форму регистрации
+                f.Show(); //открываем форму как обычное окно
+            }
+        }
     }
 }
